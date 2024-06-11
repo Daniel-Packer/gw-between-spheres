@@ -20,7 +20,7 @@ def plot_trial_outcomes(trial_outcome_path: pathlib.Path):
     metadata = trial_dict["metadata"]
     sphere_dim_1 = metadata["sphere_dimension_1"]
     sphere_dim_2 = metadata["sphere_dimension_2"]
-    sampling_strategy = metadata["sampling_strategy"]
+    sampling_strategy = metadata["subsampling_strategy"]
     n_trials = metadata["n_trials"]
 
     trial_outcomes = trial_dict["data"]
@@ -102,4 +102,4 @@ def plot_trial_outcomes(trial_outcome_path: pathlib.Path):
         ylabel="Computed Distance",
     )
 
-    plt.savefig(PLOT_PATH / f"{sampling_strategy}_trials" / f"n_{n_trials}.png")
+    plt.savefig(PLOT_PATH / f"{sampling_strategy}_trials" / f"n_{n_trials}_d_{sphere_dim_1}_d{sphere_dim_2}.png")

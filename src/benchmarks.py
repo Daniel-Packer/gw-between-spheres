@@ -236,13 +236,13 @@ def voronoi_trial(d_1, d_2, n_1, n_2, seed=0, epsilon=1e-2, n_larger=1_000_000):
     pts_1, wghts_1 = point_arrangement.get_voronoi_sphere_pts(
         d_1, n_1, rng=rng, n_larger=n_larger
     )
-    pts_2, wghts_1 = point_arrangement.get_voronoi_sphere_pts(
+    pts_2, wghts_2 = point_arrangement.get_voronoi_sphere_pts(
         d_2, n_2, rng=rng, n_larger=n_larger
     )
 
     true_distance = sphere_gw_distance(d_1 - 1, d_2 - 1)
-    pot_estimated_distance = get_empirical_gw_pot(pts_1, pts_2, epsilon=-1)
-    ott_estimated_distance = get_empirical_gw_ott(pts_1, pts_2, epsilon=epsilon)
+    pot_estimated_distance = get_empirical_gw_pot(pts_1, pts_2, epsilon=-1, wghts_1=wghts_1, wghts_2=wghts_2)
+    ott_estimated_distance = get_empirical_gw_ott(pts_1, pts_2, epsilon=epsilon, wghts_1=wghts_1, wghts_2=wghts_2)
     return {
         "true_distance": true_distance,
         "pot_estimate": pot_estimated_distance,
@@ -287,7 +287,7 @@ def benchmarking_run(
         with open(
             data_path
             / f"{subsampling_strategy}_trials"
-            / f"{subsampling_strategy}_trials_n{n_trials}.json",
+            / f"{subsampling_strategy}_trials_n{n_trials}_d{m}_d{n}.json",
             "w",
         ) as f:
             json.dump(trial_data, f)
@@ -296,7 +296,7 @@ def benchmarking_run(
             "Desired directory not found, dumping experiment outputs to current location."
         )
         with open(
-            f"{subsampling_strategy}_trials_n{n_trials}.json",
+            f"{subsampling_strategy}_trials_n{n_trials}_d{m}_d{n}.json",
             "w",
         ) as f:
             json.dump(trial_data, f)
