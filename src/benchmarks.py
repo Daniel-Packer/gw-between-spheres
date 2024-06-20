@@ -259,6 +259,8 @@ def benchmarking_run(
     samples=np.arange(10, 200, 10),
     verbose=False,
 ):
+    """ Runs a benchmarking run.
+    """
     progress_bar = tqdm(samples) if verbose else samples
     trial_outcomes = {}
     for s in progress_bar:
