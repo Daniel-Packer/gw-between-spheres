@@ -97,7 +97,7 @@ def plot_trial_outcomes(trial_outcome_path: pathlib.Path):
     ax.legend()
 
     ax.set(
-        title=f"Distance Between Random Points on $S^{sphere_dim_1}$ and $S^{sphere_dim_2}$",
+        title=f"Distance Between Random Points on $S^{sphere_dim_1}$ and $S^{sphere_dim_2}$\n(Subsampling strategy is {sampling_strategy})",
         xlabel="Number of Sampled Points",
         ylabel="Computed Distance",
     )
