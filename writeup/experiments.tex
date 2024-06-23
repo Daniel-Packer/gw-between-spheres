@@ -1,0 +1,22 @@
+\documentclass{article}
+
+\usepackage{xcolor}
+
+\begin{document}
+\section{Experiments}
+The explicit computations of the $(4, 2)$-Gromov-Wasserstein distance between Euclidean spheres provides a helpful tool for benchmarking common optimal transport packages.
+The authors are aware of two well-known and commonly used python implementations of optimal transport solvers: Python Optimal Transport (POT) \textcolor{blue}{CITE} and Optimal Transport Tools (OTT) \textcolor{blue}{CITE}.
+These package implement two of the common methods for computing the Gromov-Wasserstein distance--either with entropic regularization (as with OTT) or without (as implemented in POT).\footnote{In fact, POT provides implementations of both solving techniques, but we include OTT, which only provides the regularized solver, since it is faster \textcolor{blue}{CITE} because of its JAX implementation.}
+
+The goal of this section is to benchmark various sampling methods and the number of samples required to obtain accurate estimates of the Gromov-Wasserstein distance while also understanding the accuracy of the various solvers.
+
+We run two sorts of experiments.
+First, we will examine how the number of samples relates to the choice of a regularized or non-regularized solver.
+Second, we will fix the number of samples and vary the dimensionality of the spheres.
+
+\subsection{Varied points experiment}
+
+
+
+
+\end{document}
