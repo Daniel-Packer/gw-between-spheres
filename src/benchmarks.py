@@ -1,4 +1,5 @@
 import pathlib
+import os
 import json
 from typing import Callable, Literal, Optional
 from tqdm.notebook import tqdm
@@ -241,13 +242,86 @@ def voronoi_trial(d_1, d_2, n_1, n_2, seed=0, epsilon=1e-2, n_larger=1_000_000):
     )
 
     true_distance = sphere_gw_distance(d_1 - 1, d_2 - 1)
-    pot_estimated_distance = get_empirical_gw_pot(pts_1, pts_2, epsilon=-1, wghts_1=wghts_1, wghts_2=wghts_2)
-    ott_estimated_distance = get_empirical_gw_ott(pts_1, pts_2, epsilon=epsilon, wghts_1=wghts_1, wghts_2=wghts_2)
+    pot_estimated_distance = get_empirical_gw_pot(
+        pts_1, pts_2, epsilon=-1, wghts_1=wghts_1, wghts_2=wghts_2
+    )
+    ott_estimated_distance = get_empirical_gw_ott(
+        pts_1, pts_2, epsilon=epsilon, wghts_1=wghts_1, wghts_2=wghts_2
+    )
     return {
         "true_distance": true_distance,
         "pot_estimate": pot_estimated_distance,
         f"ott_estimate_reg{epsilon}": ott_estimated_distance,
     }
+
+
+def varied_dimension_run(
+    dim_range: list[int],
+    n_trials: int,
+    subsampling_strategy: Literal["random", "arrange", "voronoi"],
+    data_path: pathlib.Path,
+    samples: int,
+    verbose: bool = True,
+):
+    trial_outcomes = {}
+    pbar = tqdm(list(enumerate(dim_range))) if verbose else enumerate(dim_range)
+    for first_dim_index, m in pbar:
+        trial_outcomes[m] = {}
+        for n in dim_range[:first_dim_index]:
+            samples_trial_outcomes = {}
+            for t in range(n_trials):
+                if subsampling_strategy == "random":
+                    samples_trial_outcomes[t] = random_trial(
+                        m + 1, n + 1, samples, samples, t, 1e-2
+                    )
+                if subsampling_strategy == "arrange":
+                    samples_trial_outcomes[t] = arranged_trial(
+                        m + 1, n + 1, samples, samples, t, 1e-2
+                    )
+                if subsampling_strategy == "voronoi":
+                    samples_trial_outcomes[t] = voronoi_trial(
+                        m + 1, n + 1, samples, samples, t, 1e-2
+                    )
+            trial_outcomes[m][n] = samples_trial_outcomes
+
+    trial_data = {
+        "metadata": {
+            "num_samples": samples,
+            "n_trials": n_trials,
+            "subsampling_strategy": subsampling_strategy,
+            "dim_range": dim_range,
+        },
+        "data": trial_outcomes,
+    }
+
+    try:
+        with open(
+            data_path
+            / f"{subsampling_strategy}_trials"
+            / f"{subsampling_strategy}_trials_n{n_trials}_s{samples}.json",
+            "w",
+        ) as f:
+            json.dump(trial_data, f)
+    except:
+        try:
+            print("Desired directory not found. Attempting to create it!")
+            os.mkdir(data_path / f"{subsampling_strategy}_trials")
+            with open(
+                data_path
+                / f"{subsampling_strategy}_trials"
+                / f"{subsampling_strategy}_trials_n{n_trials}_s{samples}.json",
+                "w",
+            ) as f:
+                json.dump(trial_data, f)
+        except:
+            print(
+                "Failed to create desire directory, dumping experiment outputs to current location."
+            )
+            with open(
+                f"{subsampling_strategy}_trials_n{n_trials}_d{m}_d{n}.json",
+                "w",
+            ) as f:
+                json.dump(trial_data, f)
 
 
 def benchmarking_run(
@@ -259,8 +333,7 @@ def benchmarking_run(
     samples=np.arange(10, 200, 10),
     verbose=False,
 ):
-    """ Runs a benchmarking run.
-    """
+    """Runs a benchmarking run."""
     progress_bar = tqdm(samples) if verbose else samples
     trial_outcomes = {}
     for s in progress_bar:

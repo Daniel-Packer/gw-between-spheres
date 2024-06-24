@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  23 JUN 2024 15:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  23 JUN 2024 23:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -40,70 +40,221 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\Gin@req@height=\dimen139
+\Gin@req@width=\dimen140
+) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks17
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen141
+)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen142
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
+)
+\inf@bad=\count193
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count194
+\leftroot@=\count195
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count196
+\DOTSCASE@=\count197
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box50
+\strutbox@=\box51
+\big@size=\dimen143
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count198
+\c@MaxMatrixCols=\count199
+\dotsspace@=\muskip16
+\c@parentequation=\count266
+\dspbrk@lvl=\count267
+\tag@help=\toks19
+\row@=\count268
+\column@=\count269
+\maxfields@=\count270
+\andhelp@=\toks20
+\eqnshift@=\dimen144
+\alignsep@=\dimen145
+\tagshift@=\dimen146
+\tagwidth@=\dimen147
+\totwidth@=\dimen148
+\lineht@=\dimen149
+\@envbody=\toks21
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count193
-\l__pdf_internal_box=\box50
+\l__color_backend_stack_int=\count271
+\l__pdf_internal_box=\box52
 ) (./experiments.aux)
 \openout1 = `experiments.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count194
-\scratchdimen=\dimen139
-\scratchbox=\box51
-\nofMPsegments=\count195
-\nofMParguments=\count196
-\everyMPshowfont=\toks16
-\MPscratchCnt=\count197
-\MPscratchDim=\dimen140
-\MPnumerator=\count198
-\makeMPintoPDFobject=\count199
-\everyMPtoPDFconversion=\toks17
+\scratchcounter=\count272
+\scratchdimen=\dimen150
+\scratchbox=\box53
+\nofMPsegments=\count273
+\nofMParguments=\count274
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count275
+\MPscratchDim=\dimen151
+\MPnumerator=\count276
+\makeMPintoPDFobject=\count277
+\everyMPtoPDFconversion=\toks24
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+ (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)) (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
 )
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 7.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 7.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 9.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 9.
-
-Overfull \hbox (2.5839pt too wide) in paragraph at lines 11--12
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+ (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+LaTeX Font Info:    Trying to load font information for U+msa on input line 9.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Overfull \hbox (2.5839pt too wide) in paragraph at lines 22--26
 \OT1/cmr/m/n/10 Wasserstein dis-tance while also un-der-stand-ing the ac-cu-racy of the var-i-ous solvers. 
  []
 
+<../plots_same_axis/voronoi_trials/n_20_d_2_d1.png, id=1, 462.528pt x 346.896pt>
+File: ../plots_same_axis/voronoi_trials/n_20_d_2_d1.png Graphic file (type png)
+<use ../plots_same_axis/voronoi_trials/n_20_d_2_d1.png>
+Package pdftex.def Info: ../plots_same_axis/voronoi_trials/n_20_d_2_d1.png  used on input line 43.
+(pdftex.def)             Requested size: 103.50105pt x 77.62477pt.
+<../plots_same_axis/arrange_trials/n_20_d_2_d1.png, id=3, 462.528pt x 346.896pt>
+File: ../plots_same_axis/arrange_trials/n_20_d_2_d1.png Graphic file (type png)
+<use ../plots_same_axis/arrange_trials/n_20_d_2_d1.png>
+Package pdftex.def Info: ../plots_same_axis/arrange_trials/n_20_d_2_d1.png  used on input line 44.
+(pdftex.def)             Requested size: 103.50105pt x 77.62477pt.
+<../plots_same_axis/random_trials/n_20_d_2_d1.png, id=4, 462.528pt x 346.896pt>
+File: ../plots_same_axis/random_trials/n_20_d_2_d1.png Graphic file (type png)
+<use ../plots_same_axis/random_trials/n_20_d_2_d1.png>
+Package pdftex.def Info: ../plots_same_axis/random_trials/n_20_d_2_d1.png  used on input line 45.
+(pdftex.def)             Requested size: 103.50105pt x 77.62477pt.
+<../plots_same_axis/voronoi_trials/n_20_d_3_d1.png, id=5, 462.528pt x 346.896pt>
+File: ../plots_same_axis/voronoi_trials/n_20_d_3_d1.png Graphic file (type png)
+<use ../plots_same_axis/voronoi_trials/n_20_d_3_d1.png>
+Package pdftex.def Info: ../plots_same_axis/voronoi_trials/n_20_d_3_d1.png  used on input line 51.
+(pdftex.def)             Requested size: 103.50105pt x 77.62477pt.
+<../plots_same_axis/arrange_trials/n_20_d_3_d1.png, id=6, 462.528pt x 346.896pt>
+File: ../plots_same_axis/arrange_trials/n_20_d_3_d1.png Graphic file (type png)
+<use ../plots_same_axis/arrange_trials/n_20_d_3_d1.png>
+Package pdftex.def Info: ../plots_same_axis/arrange_trials/n_20_d_3_d1.png  used on input line 52.
+(pdftex.def)             Requested size: 103.50105pt x 77.62477pt.
+<../plots_same_axis/random_trials/n_20_d_3_d1.png, id=7, 462.528pt x 346.896pt>
+File: ../plots_same_axis/random_trials/n_20_d_3_d1.png Graphic file (type png)
+<use ../plots_same_axis/random_trials/n_20_d_3_d1.png>
+Package pdftex.def Info: ../plots_same_axis/random_trials/n_20_d_3_d1.png  used on input line 53.
+(pdftex.def)             Requested size: 103.50105pt x 77.62477pt.
+<../plots_same_axis/voronoi_trials/n_20_d_3_d2.png, id=8, 462.528pt x 346.896pt>
+File: ../plots_same_axis/voronoi_trials/n_20_d_3_d2.png Graphic file (type png)
+<use ../plots_same_axis/voronoi_trials/n_20_d_3_d2.png>
+Package pdftex.def Info: ../plots_same_axis/voronoi_trials/n_20_d_3_d2.png  used on input line 59.
+(pdftex.def)             Requested size: 103.50105pt x 77.62477pt.
+<../plots_same_axis/arrange_trials/n_20_d_3_d2.png, id=9, 462.528pt x 346.896pt>
+File: ../plots_same_axis/arrange_trials/n_20_d_3_d2.png Graphic file (type png)
+<use ../plots_same_axis/arrange_trials/n_20_d_3_d2.png>
+Package pdftex.def Info: ../plots_same_axis/arrange_trials/n_20_d_3_d2.png  used on input line 60.
+(pdftex.def)             Requested size: 103.50105pt x 77.62477pt.
+<../plots_same_axis/random_trials/n_20_d_3_d2.png, id=10, 462.528pt x 346.896pt>
+File: ../plots_same_axis/random_trials/n_20_d_3_d2.png Graphic file (type png)
+<use ../plots_same_axis/random_trials/n_20_d_3_d2.png>
+Package pdftex.def Info: ../plots_same_axis/random_trials/n_20_d_3_d2.png  used on input line 61.
+(pdftex.def)             Requested size: 103.50105pt x 77.62477pt.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./experiments.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../plots_same_axis/voronoi_trials/n_20_d_2_d1.png> <../plots_same_axis/arrange_trials/n_20_d_2_d1.png> <../plots_same_axis/random_trials/n_20_d_2_d1.png>] [2 <../plots_same_axis/voronoi_trials/n_20_d_3_d1.png> <../plots_same_axis/arrange_trials/n_20_d_3_d1.png> <../plots_same_axis/random_trials/n_20_d_3_d1.png>] [3 <../plots_same_axis/voronoi_trials/n_20_d_3_d2.png> <../plots_same_axis/arrange_trials/n_20_d_3_d2.png> <../plots_same_axis/random_trials/n_20_d_3_d2.png>] (./experiments.aux) ) 
 Here is how much of TeX's memory you used:
- 1381 strings out of 478287
- 19825 string characters out of 5849289
- 316834 words of memory out of 5000000
- 19633 multiletter control sequences out of 15000+600000
- 472292 words of font info for 38 fonts, out of 8000000 for 9000
+ 3211 strings out of 478287
+ 52479 string characters out of 5849289
+ 348814 words of memory out of 5000000
+ 21367 multiletter control sequences out of 15000+600000
+ 475268 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,8n,47p,486b,156s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on experiments.pdf (1 page, 70232 bytes).
+ 60i,8n,67p,285b,236s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on experiments.pdf (3 pages, 522687 bytes).
 PDF statistics:
- 38 PDF objects out of 1000 (max. 8388607)
- 22 compressed objects within 1 object stream
+ 98 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
