@@ -5,10 +5,35 @@ import numpy as np
 from src.benchmarks import sphere_gw_distance
 import json
 import pathlib
-from typing import Optional
+from typing import Optional, Literal
 import os
 
 PLOT_PATH = pathlib.Path("./plots")
+
+
+def make_method_pretty(method_name: str):
+    return method_name[:3].upper()
+
+
+def get_relative_error(estimate: pd.DataFrame, true_value: pd.DataFrame):
+    return (estimate - true_value) / estimate
+
+
+def get_absolute_error(estimate: pd.DataFrame, true_value: pd.DataFrame):
+    return estimate - true_value
+
+
+def get_mean_res(gw_method: str, raw_data):
+    metadata, data = raw_data["metadata"], raw_data["data"]
+    dim_range = metadata["dim_range"]
+    trials = {}
+    for ix, m in enumerate(dim_range):
+        trials[m] = {}
+        for n in dim_range[:ix]:
+            trials[m][n] = np.mean(
+                list(map(lambda x: x[1][gw_method], data[str(m)][str(n)].items()))
+            )
+    return trials
 
 
 def plot_trial_outcomes(
@@ -131,17 +156,47 @@ def plot_trial_outcomes(
         )
 
 
-def plot_varying_dimension_trial_outcomes(
-    trial_outcomes_path: pathlib.Path,
-    plot_path: Optional[pathlib.Path],
+def make_dimension_plot(
+    trial_data_path: pathlib.Path,
+    gw_method: str,
+    plot_path: Optional[pathlib.Path] = None,
+    error_type: Literal["relative", "absolute"] = "relative",
     **kwargs,
 ):
     plot_path = plot_path if plot_path is not None else PLOT_PATH
-    trial_dict = json.load(open(trial_outcomes_path, "r"))
+    with open(trial_data_path, "r") as f:
+        raw_data = json.load(f)
 
-    metadata = trial_dict["metadata"]
-    samples = metadata["samples"]
-    sampling_strategy = metadata["subsampling_strategy"]
+    metadata = raw_data["metadata"]
+    subsampling_strategy = metadata["subsampling_strategy"]
+    n_samples = metadata["num_samples"]
     n_trials = metadata["n_trials"]
 
-    
+    estimate_df = pd.DataFrame.from_dict(get_mean_res(gw_method, raw_data)).dropna(
+        axis=1, how="all"
+    )
+    true_df = pd.DataFrame.from_dict(get_mean_res("true_distance", raw_data)).dropna(
+        axis=1, how="all"
+    )
+
+    if error_type == "relative":
+        error = get_relative_error(estimate_df, true_df)
+    if error_type == "absolute":
+        error = get_absolute_error(estimate_df, true_df)
+
+    if error is None:
+        raise TypeError("`error_type` should be either 'relative' or 'absolute'")
+
+    fig, ax = plt.subplots()
+    ax: plt.Axes = ax
+    sns.heatmap(error, ax=ax, annot=True, center=0.0)
+    ax.set(
+        aspect="equal",
+        title=f"Relative error of mean prediction of {n_trials} trials,\nusing {make_method_pretty(gw_method)} and {n_samples} point {subsampling_strategy} sampling.",
+        xlabel="Larger sphere dimension",
+        ylabel="Smaller sphere dimension",
+        **kwargs,
+    )
+    plt.tight_layout()
+
+    plt.savefig(plot_path / f"dimensions_{gw_method}_{subsampling_strategy}.png")
