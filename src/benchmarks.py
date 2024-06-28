@@ -217,14 +217,18 @@ def arranged_trial(d_1, d_2, n_1, n_2, seed=0, epsilon=1e-2, arranging_iters=100
     }
 
 
-def random_trial(d_1, d_2, n_1, n_2, seed=0, epsilon=1e-2):
+def random_trial(d_1, d_2, n_1, n_2, seed=0, epsilon=1e-2, n_larger=1_000_000, voronoi_weight=False):
     rng = jax.random.PRNGKey(seed)
-    pts_1 = point_arrangement.generate_points_on_sphere(d_1, n_1, rng=rng)
-    pts_2 = point_arrangement.generate_points_on_sphere(d_2, n_2, rng=rng)
+    pts_1, wghts_1 = point_arrangement.uniform_sphere_points(
+        d_1, n_1, n_larger, rng=rng, voronoi_weight=voronoi_weight
+    )
+    pts_2, wghts_2 = point_arrangement.uniform_sphere_points(
+        d_2, n_2, n_larger, rng=rng, voronoi_weight=voronoi_weight
+    )
 
     true_distance = sphere_gw_distance(d_1 - 1, d_2 - 1)
-    pot_estimated_distance = get_empirical_gw_pot(pts_1, pts_2, epsilon=-1)
-    ott_estimated_distance = get_empirical_gw_ott(pts_1, pts_2, epsilon=epsilon)
+    pot_estimated_distance = get_empirical_gw_pot(pts_1, pts_2, epsilon=-1, wghts_1=wghts_1, wghts_2=wghts_2)
+    ott_estimated_distance = get_empirical_gw_ott(pts_1, pts_2, epsilon=epsilon, wghts_1=wghts_1, wghts_2=wghts_2)
     return {
         "true_distance": true_distance,
         "pot_estimate": pot_estimated_distance,
@@ -232,13 +236,15 @@ def random_trial(d_1, d_2, n_1, n_2, seed=0, epsilon=1e-2):
     }
 
 
-def voronoi_trial(d_1, d_2, n_1, n_2, seed=0, epsilon=1e-2, n_larger=1_000_000):
+def voronoi_trial(
+    d_1, d_2, n_1, n_2, seed=0, epsilon=1e-2, n_larger=1_000_000, voronoi_weight=False
+):
     rng = jax.random.PRNGKey(seed)
-    pts_1, wghts_1 = point_arrangement.get_voronoi_sphere_pts(
-        d_1, n_1, rng=rng, n_larger=n_larger
+    pts_1, wghts_1 = point_arrangement.fps_sphere_points(
+        d_1, n_1, rng=rng, n_larger=n_larger, voronoi_weight=voronoi_weight
     )
-    pts_2, wghts_2 = point_arrangement.get_voronoi_sphere_pts(
-        d_2, n_2, rng=rng, n_larger=n_larger
+    pts_2, wghts_2 = point_arrangement.fps_sphere_points(
+        d_2, n_2, rng=rng, n_larger=n_larger, voronoi_weight=voronoi_weight
     )
 
     true_distance = sphere_gw_distance(d_1 - 1, d_2 - 1)
@@ -258,29 +264,31 @@ def voronoi_trial(d_1, d_2, n_1, n_2, seed=0, epsilon=1e-2, n_larger=1_000_000):
 def varied_dimension_run(
     dim_range: list[int],
     n_trials: int,
-    subsampling_strategy: Literal["random", "arrange", "voronoi"],
+    sampling_strategy: Literal["random", "arrange", "fps"],
+    weighting_strategy: Literal["uniform", "voronoi"],
     data_path: pathlib.Path,
     samples: int,
     verbose: bool = True,
 ):
     trial_outcomes = {}
     pbar = tqdm(list(enumerate(dim_range))) if verbose else enumerate(dim_range)
+    voronoi_weight = weighting_strategy == "voronoi"
     for first_dim_index, m in pbar:
         trial_outcomes[m] = {}
         for n in dim_range[:first_dim_index]:
             samples_trial_outcomes = {}
             for t in range(n_trials):
-                if subsampling_strategy == "random":
+                if sampling_strategy == "random":
                     samples_trial_outcomes[t] = random_trial(
-                        m + 1, n + 1, samples, samples, t, 1e-2
+                        m + 1, n + 1, samples, samples, t, 1e-2, voronoi_weight=voronoi_weight
                     )
-                if subsampling_strategy == "arrange":
+                if sampling_strategy == "arrange":
                     samples_trial_outcomes[t] = arranged_trial(
-                        m + 1, n + 1, samples, samples, t, 1e-2
+                        m + 1, n + 1, samples, samples, t, 1e-2, voronoi_weight=voronoi_weight
                     )
-                if subsampling_strategy == "voronoi":
+                if sampling_strategy == "fps":
                     samples_trial_outcomes[t] = voronoi_trial(
-                        m + 1, n + 1, samples, samples, t, 1e-2
+                        m + 1, n + 1, samples, samples, t, 1e-2, voronoi_weight=voronoi_weight
                     )
             trial_outcomes[m][n] = samples_trial_outcomes
 
@@ -288,7 +296,8 @@ def varied_dimension_run(
         "metadata": {
             "num_samples": samples,
             "n_trials": n_trials,
-            "subsampling_strategy": subsampling_strategy,
+            "subsampling_strategy": sampling_strategy,
+            "weighting_strategy": weighting_strategy,
             "dim_range": dim_range,
         },
         "data": trial_outcomes,
@@ -297,19 +306,19 @@ def varied_dimension_run(
     try:
         with open(
             data_path
-            / f"{subsampling_strategy}_trials"
-            / f"{subsampling_strategy}_trials_n{n_trials}_s{samples}.json",
+            / f"{sampling_strategy}-{weighting_strategy}_trials"
+            / f"{sampling_strategy}-{weighting_strategy}_trials_n{n_trials}_s{samples}.json",
             "w",
         ) as f:
             json.dump(trial_data, f)
     except:
         try:
             print("Desired directory not found. Attempting to create it!")
-            os.mkdir(data_path / f"{subsampling_strategy}_trials")
+            os.mkdir(data_path / f"{sampling_strategy}-{weighting_strategy}_trials")
             with open(
                 data_path
-                / f"{subsampling_strategy}_trials"
-                / f"{subsampling_strategy}_trials_n{n_trials}_s{samples}.json",
+                / f"{sampling_strategy}-{weighting_strategy}_trials"
+                / f"{sampling_strategy}-{weighting_strategy}_trials_n{n_trials}_s{samples}.json",
                 "w",
             ) as f:
                 json.dump(trial_data, f)
@@ -318,7 +327,7 @@ def varied_dimension_run(
                 "Failed to create desire directory, dumping experiment outputs to current location."
             )
             with open(
-                f"{subsampling_strategy}_trials_n{n_trials}_d{m}_d{n}.json",
+                f"{sampling_strategy}-{weighting_strategy}_trials_n{n_trials}_d{m}_d{n}.json",
                 "w",
             ) as f:
                 json.dump(trial_data, f)
@@ -328,7 +337,8 @@ def benchmarking_run(
     m: int,
     n: int,
     n_trials: int,
-    subsampling_strategy: Literal["random", "arrange", "voronoi"],
+    sampling_strategy: Literal["random", "arrange", "fps"],
+    weighting_strategy: Literal["uniform", "voronoi"],
     data_path: pathlib.Path,
     samples=np.arange(10, 200, 10),
     verbose=False,
@@ -336,15 +346,23 @@ def benchmarking_run(
     """Runs a benchmarking run."""
     progress_bar = tqdm(samples) if verbose else samples
     trial_outcomes = {}
+
+    voronoi_weight = weighting_strategy == "voronoi"
     for s in progress_bar:
         samples_trial_outcomes = {}
         for t in range(n_trials):
-            if subsampling_strategy == "random":
-                samples_trial_outcomes[t] = random_trial(m + 1, n + 1, s, s, t, 1e-2)
-            if subsampling_strategy == "arrange":
-                samples_trial_outcomes[t] = arranged_trial(m + 1, n + 1, s, s, t, 1e-2)
-            if subsampling_strategy == "voronoi":
-                samples_trial_outcomes[t] = voronoi_trial(m + 1, n + 1, s, s, t, 1e-2)
+            if sampling_strategy == "random":
+                samples_trial_outcomes[t] = random_trial(
+                    m + 1, n + 1, s, s, t, 1e-2, voronoi_weight=voronoi_weight
+                )
+            if sampling_strategy == "arrange":
+                samples_trial_outcomes[t] = arranged_trial(
+                    m + 1, n + 1, s, s, t, 1e-2, voronoi_weight=voronoi_weight
+                )
+            if sampling_strategy == "fps":
+                samples_trial_outcomes[t] = voronoi_trial(
+                    m + 1, n + 1, s, s, t, 1e-2, voronoi_weight=voronoi_weight
+                )
 
         trial_outcomes[int(s)] = samples_trial_outcomes
 
@@ -353,7 +371,8 @@ def benchmarking_run(
             "sphere_dimension_1": m,
             "sphere_dimension_2": n,
             "n_trials": n_trials,
-            "subsampling_strategy": subsampling_strategy,
+            "subsampling_strategy": sampling_strategy,
+            "weighting_strategy": weighting_strategy,
         },
         "data": trial_outcomes,
     }
@@ -361,17 +380,28 @@ def benchmarking_run(
     try:
         with open(
             data_path
-            / f"{subsampling_strategy}_trials"
-            / f"{subsampling_strategy}_trials_n{n_trials}_d{m}_d{n}.json",
+            / f"{sampling_strategy}-{weighting_strategy}_trials"
+            / f"{sampling_strategy}-{weighting_strategy}_trials_n{n_trials}_d{m}_d{n}.json",
             "w",
         ) as f:
             json.dump(trial_data, f)
     except:
-        print(
-            "Desired directory not found, dumping experiment outputs to current location."
-        )
-        with open(
-            f"{subsampling_strategy}_trials_n{n_trials}_d{m}_d{n}.json",
-            "w",
-        ) as f:
-            json.dump(trial_data, f)
+        try:
+            print("Desired directory not found, trying to create it.")
+            os.mkdir(data_path / f"{sampling_strategy}-{weighting_strategy}_trials")
+            with open(
+                data_path
+                / f"{sampling_strategy}-{weighting_strategy}_trials"
+                / f"{sampling_strategy}-{weighting_strategy}_trials_n{n_trials}_d{m}_d{n}.json",
+                "w",
+            ) as f:
+                json.dump(trial_data, f)
+        except:
+            print(
+                "Desired directory not found, dumping experiment outputs to current location."
+            )
+            with open(
+                f"{sampling_strategy}-{weighting_strategy}_trials_n{n_trials}_d{m}_d{n}.json",
+                "w",
+            ) as f:
+                json.dump(trial_data, f)

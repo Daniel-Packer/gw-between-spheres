@@ -83,12 +83,38 @@ def get_furthest_point(pts_subset: jnp.ndarray, pts_all: jnp.ndarray) -> jnp.nda
     return pts_all[furthest_point_idx]
 
 
-def get_voronoi_sphere_pts(
+def voronoi_reweight(pts: jnp.ndarray, pts_larger: jnp.ndarray):
+    nearest_pts = jnp.sum(
+        jnp.square(pts[:, None, :] - pts_larger[None, :, :]), axis=-1
+    ).argmin(0)
+    return jnp.unique_counts(nearest_pts).counts / pts_larger.shape[0]
+
+def uniform_sphere_points(
     ambient_dimension: int,
     n_points: int,
     n_larger: int = 1_000_000,
     rng: Optional[jax.Array] = None,
-    reweight: bool = True,
+    voronoi_weight: bool = True,
+):
+    rng = random.PRNGKey(0) if rng is None else rng
+    rngs = random.split(rng, 2)
+    pts_larger = generate_points_on_sphere(ambient_dimension, n_larger, rngs[0])
+    pts = generate_points_on_sphere(ambient_dimension, n_points, rngs[1])
+
+    wghts = (
+        voronoi_reweight(pts, pts_larger)
+        if voronoi_weight
+        else jnp.ones(n_points) / n_points
+    )
+    return pts, wghts
+    
+
+def fps_sphere_points(
+    ambient_dimension: int,
+    n_points: int,
+    n_larger: int = 1_000_000,
+    rng: Optional[jax.Array] = None,
+    voronoi_weight: bool = True,
 ):
     rng = random.PRNGKey(0) if rng is None else rng
     pts_larger = generate_points_on_sphere(ambient_dimension, n_larger, rng)
@@ -106,12 +132,9 @@ def get_voronoi_sphere_pts(
 
     pts = jnp.stack(pts)
 
-    nearest_pts = jnp.sum(
-        jnp.square(pts[:, None, :] - pts_larger[None, :, :]), axis=-1
-    ).argmin(0)
     wghts = (
-        jnp.unique_counts(nearest_pts).counts / n_larger
-        if reweight
+        voronoi_reweight(pts, pts_larger)
+        if voronoi_weight
         else jnp.ones(n_points) / n_points
     )
 

@@ -57,7 +57,14 @@ def plot_trial_outcomes(
     sphere_dim_1 = metadata["sphere_dimension_1"]
     sphere_dim_2 = metadata["sphere_dimension_2"]
     sampling_strategy = metadata["subsampling_strategy"]
+    weighting_strategy = metadata["weighting_strategy"]
     n_trials = metadata["n_trials"]
+
+    sampling_strategy_name = {
+        "fps": "FPS",
+        "random": "random",
+        "arrange": "arrange"
+    }[sampling_strategy]
 
     trial_outcomes = trial_dict["data"]
     new_trial_outcome_dict = {
@@ -135,7 +142,7 @@ def plot_trial_outcomes(
     ax.legend()
 
     ax.set(
-        title=f"Distance Between Random Points on $S^{sphere_dim_1}$ and $S^{sphere_dim_2}$\n(Subsampling strategy is {sampling_strategy})",
+        title=f"Distance Between Random Samples of $S^{sphere_dim_1}$ and $S^{sphere_dim_2}$\n(Sampling strategy is {sampling_strategy_name} with {weighting_strategy} weights)",
         xlabel="Number of Sampled Points",
         ylabel="Computed Distance",
         **kwargs,
@@ -144,14 +151,14 @@ def plot_trial_outcomes(
     try:
         plt.savefig(
             plot_path
-            / f"{sampling_strategy}_trials"
+            / f"{sampling_strategy}-{weighting_strategy}_trials"
             / f"n_{n_trials}_d_{sphere_dim_1}_d{sphere_dim_2}.png"
         )
     except FileNotFoundError:
-        os.mkdir(plot_path / f"{sampling_strategy}_trials")
+        os.mkdir(plot_path / f"{sampling_strategy}-{weighting_strategy}_trials")
         plt.savefig(
             plot_path
-            / f"{sampling_strategy}_trials"
+            / f"{sampling_strategy}-{weighting_strategy}_trials"
             / f"n_{n_trials}_d_{sphere_dim_1}_d{sphere_dim_2}.png"
         )
 
@@ -169,6 +176,7 @@ def make_dimension_plot(
 
     metadata = raw_data["metadata"]
     subsampling_strategy = metadata["subsampling_strategy"]
+    weighting_strategy = metadata["weighting_strategy"]
     n_samples = metadata["num_samples"]
     n_trials = metadata["n_trials"]
 
@@ -192,11 +200,11 @@ def make_dimension_plot(
     sns.heatmap(error, ax=ax, annot=True, center=0.0)
     ax.set(
         aspect="equal",
-        title=f"Relative error of mean prediction of {n_trials} trials,\nusing {make_method_pretty(gw_method)} and {n_samples} point {subsampling_strategy} sampling.",
+        title=f"Relative error of mean prediction of {n_trials} trials, using {make_method_pretty(gw_method)}\n and {n_samples} point {subsampling_strategy} sampling with {weighting_strategy} weights.",
         xlabel="Larger sphere dimension",
         ylabel="Smaller sphere dimension",
         **kwargs,
     )
     plt.tight_layout()
 
-    plt.savefig(plot_path / f"dimensions_{gw_method}_{subsampling_strategy}.png")
+    plt.savefig(plot_path / f"dimensions_{gw_method}_{subsampling_strategy}-{weighting_strategy}.png")
