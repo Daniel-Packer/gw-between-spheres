@@ -88,6 +88,7 @@ def get_voronoi_sphere_pts(
     n_points: int,
     n_larger: int = 1_000_000,
     rng: Optional[jax.Array] = None,
+    reweight: bool = True,
 ):
     rng = random.PRNGKey(0) if rng is None else rng
     pts_larger = generate_points_on_sphere(ambient_dimension, n_larger, rng)
@@ -102,10 +103,16 @@ def get_voronoi_sphere_pts(
             distances, jnp.sum(jnp.square(pt - pts_larger), axis=-1)
         )
         pts.append(pt)
-    
+
     pts = jnp.stack(pts)
 
-    nearest_pts = jnp.sum(jnp.square(pts[:, None, :] - pts_larger[None, :, :]), axis = -1).argmin(0)
-    wghts = jnp.unique_counts(nearest_pts).counts / n_larger
+    nearest_pts = jnp.sum(
+        jnp.square(pts[:, None, :] - pts_larger[None, :, :]), axis=-1
+    ).argmin(0)
+    wghts = (
+        jnp.unique_counts(nearest_pts).counts / n_larger
+        if reweight
+        else jnp.ones(n_points) / n_points
+    )
 
     return pts, wghts

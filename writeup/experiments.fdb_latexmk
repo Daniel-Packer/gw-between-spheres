@@ -1,5 +1,11 @@
 # Fdb version 3
-["pdflatex"] 1719198644 "/home/daniel/Documents/gw-between-spheres/writeup/experiments.tex" "experiments.pdf" "experiments" 1719198645
+["pdflatex"] 1719353670 "/home/daniel/Documents/gw-between-spheres/writeup/experiments.tex" "experiments.pdf" "experiments" 1719353671
+  "../plots_dimensions/dimensions_ott_estimate_reg0.01_arrange.png" 1719353120 38965 bc4b6b0dc60f724ac32b0c0346365649 ""
+  "../plots_dimensions/dimensions_ott_estimate_reg0.01_random.png" 1719353120 38036 cdaeae296e6b56913321181ce15c9a28 ""
+  "../plots_dimensions/dimensions_ott_estimate_reg0.01_voronoi.png" 1719353120 38129 a80ca5e605112e438b3fb35cdb93ca65 ""
+  "../plots_dimensions/dimensions_pot_estimate_arrange.png" 1719353120 39685 1088a850063df37afac613b1b557ada5 ""
+  "../plots_dimensions/dimensions_pot_estimate_random.png" 1719353120 38942 62d3349c5a4a15a5e6fff530c2710f87 ""
+  "../plots_dimensions/dimensions_pot_estimate_voronoi.png" 1719353120 38652 d2b83630ca2b3b70a8b0117ca5671675 ""
   "../plots_same_axis/arrange_trials/n_20_d_2_d1.png" 1719192008 54873 05ef651895e5793c01de187590e69198 ""
   "../plots_same_axis/arrange_trials/n_20_d_3_d1.png" 1719192054 61164 bb953879848c1d2ea64070932717e6c8 ""
   "../plots_same_axis/arrange_trials/n_20_d_3_d2.png" 1719192123 61932 4d78899eade1f88cc28e971639c5a77b ""
@@ -10,7 +16,7 @@
   "../plots_same_axis/voronoi_trials/n_20_d_3_d1.png" 1719192053 46468 95396441041a166be6211baddd1ab241 ""
   "../plots_same_axis/voronoi_trials/n_20_d_3_d2.png" 1719192122 51142 a75b9fa20089597acd059d8cac37ee95 ""
   "/etc/texmf/web2c/texmf.cnf" 1685213904 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/daniel/Documents/gw-between-spheres/writeup/experiments.tex" 1719198644 3966 4b1726ddbcde7d2c0590327b3c2761f1 ""
+  "/home/daniel/Documents/gw-between-spheres/writeup/experiments.tex" 1719353669 4705 deda1bacbe130b5b627b04fae056f4ae ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -75,8 +81,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1685215521 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1710509828 2801704 581ebd55dec93e39dac1f0dbd149abd7 ""
-  "experiments.aux" 1719198644 957 53b37d1ec189aaf0dbaed22aff6d697c "pdflatex"
-  "experiments.tex" 1719198644 3966 4b1726ddbcde7d2c0590327b3c2761f1 ""
+  "experiments.aux" 1719353671 957 94ec064ca27b3ae2fe0d054c21d99e11 "pdflatex"
+  "experiments.tex" 1719353669 4705 deda1bacbe130b5b627b04fae056f4ae ""
   (generated)
   "experiments.aux"
   "experiments.log"

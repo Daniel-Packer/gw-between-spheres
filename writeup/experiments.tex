@@ -24,9 +24,9 @@ number of samples required to obtain accurate estimates of the
 Gromov-Wasserstein distance while also understanding the accuracy of the
 various solvers.
 
-We run two sorts of experiments. First, we will examine how the number of
+We run two sorts of experiments. First, we examine how the number of
 samples relates to the choice of a regularized or non-regularized solver.
-Second, we will fix the number of samples and vary the dimensionality of the
+Second, we fix the number of samples and vary the dimensionality of the
 spheres.
 
 \subsection{Varied points experiment}
@@ -38,7 +38,7 @@ samples between $10$ and $200$ in increments of $10$ (inclusive). The plotted
 lines are the mean values estimated from the $20$ trials, while the shaded area
 includes the central $80\%$ of samples.
 
-\begin{figure}[hb]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.3\linewidth]{../plots_same_axis/voronoi_trials/n_20_d_2_d1.png}
     \includegraphics[width=0.3\linewidth]{../plots_same_axis/arrange_trials/n_20_d_2_d1.png}
@@ -46,7 +46,7 @@ includes the central $80\%$ of samples.
     \caption{Estimating the Gromov-Wasserstein distance between $\mathbb{S}^2_E$ and $\mathbb{S}^1_E$.}
 \end{figure}
 
-\begin{figure}[hb]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.3\linewidth]{../plots_same_axis/voronoi_trials/n_20_d_3_d1.png}
     \includegraphics[width=0.3\linewidth]{../plots_same_axis/arrange_trials/n_20_d_3_d1.png}
@@ -54,7 +54,7 @@ includes the central $80\%$ of samples.
     \caption{Estimating the Gromov-Wasserstein distance between $\mathbb{S}^3_E$ and $\mathbb{S}^1_E$.}
 \end{figure}
 
-\begin{figure}[hb]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.3\linewidth]{../plots_same_axis/voronoi_trials/n_20_d_3_d2.png}
     \includegraphics[width=0.3\linewidth]{../plots_same_axis/arrange_trials/n_20_d_3_d2.png}
@@ -76,5 +76,18 @@ true distance,
 We then recorded the relative error of this estimator: $\textrm{relative
 error}_{m, n} = \frac{\hat{d}_{m, n} - d_{m, n}}{d_{m, n}}$. Each of these
 values is recorded in the corresponding entry of the heatmap.
+
+\begin{figure}
+    \centering
+    \begin{tabular}{ccc}
+        \includegraphics[width=0.27\linewidth]{../plots_dimensions/dimensions_pot_estimate_voronoi.png} & 
+        \includegraphics[width=0.27\linewidth]{../plots_dimensions/dimensions_pot_estimate_arrange.png} & 
+        \includegraphics[width=0.27\linewidth]{../plots_dimensions/dimensions_pot_estimate_random.png} \\
+        \includegraphics[width=0.27\linewidth]{../plots_dimensions/dimensions_ott_estimate_reg0.01_voronoi.png} & 
+        \includegraphics[width=0.27\linewidth]{../plots_dimensions/dimensions_ott_estimate_reg0.01_arrange.png} & 
+        \includegraphics[width=0.27\linewidth]{../plots_dimensions/dimensions_ott_estimate_reg0.01_random.png}
+    \end{tabular}
+
+\end{figure}
 
 \end{document}
