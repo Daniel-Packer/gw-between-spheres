@@ -152,14 +152,14 @@ def plot_trial_outcomes(
         plt.savefig(
             plot_path
             / f"{sampling_strategy}-{weighting_strategy}_trials"
-            / f"n_{n_trials}_d_{sphere_dim_1}_d{sphere_dim_2}.png"
+            / f"n_{n_trials}_d_{sphere_dim_1}_d{sphere_dim_2}.pdf"
         )
     except FileNotFoundError:
         os.mkdir(plot_path / f"{sampling_strategy}-{weighting_strategy}_trials")
         plt.savefig(
             plot_path
             / f"{sampling_strategy}-{weighting_strategy}_trials"
-            / f"n_{n_trials}_d_{sphere_dim_1}_d{sphere_dim_2}.png"
+            / f"n_{n_trials}_d_{sphere_dim_1}_d{sphere_dim_2}.pdf"
         )
 
 
@@ -207,4 +207,4 @@ def make_dimension_plot(
     )
     plt.tight_layout()
 
-    plt.savefig(plot_path / f"dimensions_{gw_method}_{subsampling_strategy}-{weighting_strategy}.png")
+    plt.savefig(plot_path / f"dimensions_{gw_method}_{subsampling_strategy}-{weighting_strategy}.pdf")

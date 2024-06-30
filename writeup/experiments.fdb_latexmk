@@ -1,11 +1,11 @@
 # Fdb version 3
-["pdflatex"] 1719353670 "/home/daniel/Documents/gw-between-spheres/writeup/experiments.tex" "experiments.pdf" "experiments" 1719353671
+["pdflatex"] 1719607161 "/home/daniel/Documents/gw-between-spheres/writeup/experiments.tex" "experiments.pdf" "experiments" 1719607163
   "../plots_dimensions/dimensions_ott_estimate_reg0.01_arrange.png" 1719353120 38965 bc4b6b0dc60f724ac32b0c0346365649 ""
-  "../plots_dimensions/dimensions_ott_estimate_reg0.01_random.png" 1719353120 38036 cdaeae296e6b56913321181ce15c9a28 ""
-  "../plots_dimensions/dimensions_ott_estimate_reg0.01_voronoi.png" 1719353120 38129 a80ca5e605112e438b3fb35cdb93ca65 ""
+  "../plots_dimensions/dimensions_ott_estimate_reg0.01_random.png" 1719607161 28212 ac85ac99604901acb2e029134ef2d40c ""
+  "../plots_dimensions/dimensions_ott_estimate_reg0.01_voronoi.png" 1719607161 27798 201dc91e38d9529ff8fe52b0402d9834 ""
   "../plots_dimensions/dimensions_pot_estimate_arrange.png" 1719353120 39685 1088a850063df37afac613b1b557ada5 ""
-  "../plots_dimensions/dimensions_pot_estimate_random.png" 1719353120 38942 62d3349c5a4a15a5e6fff530c2710f87 ""
-  "../plots_dimensions/dimensions_pot_estimate_voronoi.png" 1719353120 38652 d2b83630ca2b3b70a8b0117ca5671675 ""
+  "../plots_dimensions/dimensions_pot_estimate_random.png" 1719607161 28400 723146c7a51e026ba5a08f8822c78cf4 ""
+  "../plots_dimensions/dimensions_pot_estimate_voronoi.png" 1719607161 31004 ed22af96d6bc908780c020e36eceeebe ""
   "../plots_same_axis/arrange_trials/n_20_d_2_d1.png" 1719192008 54873 05ef651895e5793c01de187590e69198 ""
   "../plots_same_axis/arrange_trials/n_20_d_3_d1.png" 1719192054 61164 bb953879848c1d2ea64070932717e6c8 ""
   "../plots_same_axis/arrange_trials/n_20_d_3_d2.png" 1719192123 61932 4d78899eade1f88cc28e971639c5a77b ""
@@ -81,7 +81,7 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1685215521 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1710509828 2801704 581ebd55dec93e39dac1f0dbd149abd7 ""
-  "experiments.aux" 1719353671 957 94ec064ca27b3ae2fe0d054c21d99e11 "pdflatex"
+  "experiments.aux" 1719607162 957 94ec064ca27b3ae2fe0d054c21d99e11 "pdflatex"
   "experiments.tex" 1719353669 4705 deda1bacbe130b5b627b04fae056f4ae ""
   (generated)
   "experiments.aux"
